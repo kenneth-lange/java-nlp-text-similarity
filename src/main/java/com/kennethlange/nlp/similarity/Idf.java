@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
  * See http://www.tfidf.com/ for more details.
  */
 final class Idf {
-    private Map<String, Double> weights = new HashMap<>();
-    private List<List<String>> documents = new ArrayList<>();
+    private final Map<String, Double> weights = new HashMap<>();
+    private final List<List<String>> documents = new ArrayList<>();
 
     public void addDocument(List<String> document) {
         documents.add(document);
@@ -35,7 +35,7 @@ final class Idf {
     }
 
     public List<String> getAllTerms() {
-        List<String> significantTerms = new ArrayList();
+        List<String> significantTerms = new ArrayList<>();
 
         for(Map.Entry<String, Double> weight : weights.entrySet()) {
             if(weight.getValue() != 0.0) {

@@ -3,9 +3,6 @@ package com.kennethlange.nlp.similarity;
 import junit.framework.TestCase;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class TestTfIdf extends TestCase {
 

@@ -8,6 +8,7 @@ import java.util.Map;
 /**
  * Find similar documents in a collection of documents.
  */
+@SuppressWarnings("WeakerAccess")
 public final class TextSimilarity {
     private Tokenizer tokenizer;
     private TfIdf tfIdf = new TfIdf();

@@ -9,7 +9,7 @@ import java.util.Map;
  * See http://www.tfidf.com/ for more details.
  */
 final class Tf {
-    private Map<String, Double> frequencies = new HashMap<>();
+    private final Map<String, Double> frequencies = new HashMap<>();
     private double numberOfTerms;
 
     public void addTerms(List<String> terms) {

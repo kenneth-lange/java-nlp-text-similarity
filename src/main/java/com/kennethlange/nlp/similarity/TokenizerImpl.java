@@ -6,7 +6,7 @@ import java.util.*;
  * The standard implementation of {@link com.kennethlange.nlp.similarity.Tokenizer}.
  */
 public final class TokenizerImpl implements Tokenizer {
-    private Set<String> stopWords;
+    private final Set<String> stopWords;
 
     /**
      * Constructs a new tokenizer using a set of user-provided stop words.

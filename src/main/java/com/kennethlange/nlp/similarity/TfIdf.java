@@ -7,8 +7,8 @@ import java.util.*;
  * See http://www.tfidf.com/ for more details.
  */
 final class TfIdf {
-    private Map<String, List<String>> documents = new HashMap<>();
-    private Map<String, double[]> vectors = new HashMap<String, double[]>();
+    private final Map<String, List<String>> documents = new HashMap<>();
+    private final Map<String, double[]> vectors = new HashMap<>();
 
     public void addDocument(String documentId, List<String> terms) {
         documents.put(documentId, terms);

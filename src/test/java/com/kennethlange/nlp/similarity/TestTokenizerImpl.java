@@ -7,7 +7,7 @@ import java.util.Collections;
 
 public class TestTokenizerImpl extends TestCase {
     public void testHappyPath() {
-        Tokenizer t = new TokenizerImpl(Collections.EMPTY_SET);
+        Tokenizer t = new TokenizerImpl(Collections.emptySet());
 
         assertEquals(Arrays.asList("my","cat","is","yellow"), t.tokenize("My cat is yellow."));
         assertEquals(Arrays.asList("my","cat","is","nice"), t.tokenize("My cat is nice."));
