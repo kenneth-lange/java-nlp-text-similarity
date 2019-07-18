@@ -27,4 +27,18 @@ public class TestTextSimilarity extends TestCase {
         assertEquals("doc2", related.get(0));
         assertEquals("doc3", related.get(1));
     }
+
+    public void testNonExistingId() {
+        try {
+            TextSimilarity m = new TextSimilarity();
+            m.addDocument("doc1", "My cat is yellow.");
+            m.addDocument("doc2", "My cat is nice.");
+            m.addDocument("doc3", "My dog is called kitty, kitty");
+            m.calculate();
+
+            List<String> related = m.getSimilarDocuments("nonExistingDoc");
+        } catch(IllegalArgumentException e) {
+            // Ignore. Should be thrown.
+        }
+    }
 }

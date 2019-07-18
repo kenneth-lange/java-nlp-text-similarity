@@ -22,7 +22,7 @@ public final class TextSimilarity {
 
     /**
      * Constructs a new instance with an user-provided tokenizer.
-     * @param tokenizer
+     * @param tokenizer The tokenizer that should be used.
      */
     public TextSimilarity(Tokenizer tokenizer) {
         this.tokenizer = tokenizer;
@@ -33,6 +33,7 @@ public final class TextSimilarity {
      * @param id   A unique identifier of the document. Typically, a primary key from a database, or an URL.
      * @param text The actual text of the document.
      */
+    @SuppressWarnings("WeakerAccess")
     public void addDocument(String id, String text) {
         if(vectors == null) {
             tfIdf.addDocument(id, tokenizer.tokenize(text));
@@ -45,6 +46,7 @@ public final class TextSimilarity {
      * Calculates the similarity of all the documents added so far. After this method has been called, you can no
      * longer add new documents.
      */
+    @SuppressWarnings("WeakerAccess")
     public void calculate() {
         tfIdf.calculate();
         this.vectors = tfIdf.getVectors();
@@ -62,10 +64,14 @@ public final class TextSimilarity {
      * @return      The most similar document. They are ordered by similarity, so the most similar is first in the
      *              returned list.
      */
+    @SuppressWarnings("WeakerAccess")
     public List<String> getSimilarDocuments(String id, int limit) {
         double[] myVector = vectors.get(id);
+        if(myVector == null) {
+            throw new IllegalArgumentException("No document with the id given as argument exists.");
+        }
 
-        Map<String, Double> similarity = new HashMap<String, Double>();
+        Map<String, Double> similarity = new HashMap<>();
 
         for(Map.Entry<String, double[]> vector : vectors.entrySet()) {
             if(!vector.getKey().equals(id)) {
@@ -96,6 +102,7 @@ public final class TextSimilarity {
     /**
      * Same as the other getSimilarDocument, except that it returns, at most, 5 documents.
      */
+    @SuppressWarnings("WeakerAccess")
     public List<String> getSimilarDocuments(String id) {
         return getSimilarDocuments(id, 5);
     }
